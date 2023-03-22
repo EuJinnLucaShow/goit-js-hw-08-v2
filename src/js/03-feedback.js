@@ -17,7 +17,6 @@ form.addEventListener('input', () => {
 
 // Перевірити, чи є збережений стан форми в локальному сховищі
 const savedState = localStorage.getItem('feedback-form-state');
-
 if (savedState) {
   // Заповнити поля форми збереженим станом
   const parsedState = JSON.parse(savedState);
@@ -33,8 +32,6 @@ form.addEventListener('submit', event => {
   if (emailInput.value === '' || messageInput.value === '') {
     return alert('Please fill in all the fields!');
   }
-  // Очистити локальне сховище
-  localStorage.removeItem('feedback-form-state');
 
   // Вивести об'єкт з полями email та message та їхніми значеннями у консоль
   const feedbackData = {
@@ -42,6 +39,9 @@ form.addEventListener('submit', event => {
     message: messageInput.value,
   };
   console.log(feedbackData);
+
+  // Очистити локальне сховище
+  localStorage.removeItem('feedback-form-state');
 
   // Очистити поля форми
   emailInput.value = '';
